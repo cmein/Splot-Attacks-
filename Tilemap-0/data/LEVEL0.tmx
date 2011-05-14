@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="15" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="15"><properties><property name="tile count" value="225"/><property name="blended tiles" value=""/></properties>
+ <tileset firstgid="1" margin="1" name="tmw_desert_spacing" spacing="1" tileheight="32" tilewidth="32">
+  <image height="199" source="tmw_desert_spacing.png" width="265"/>
+ </tileset>
+ <layer height="15" name="Tile Layer 1" width="15">
+  <data compression="zlib" encoding="base64">
+   eJyl0dsKgCAMBmDprrqruyDtnEQH3//pWrBgiMtJFx/I3O8GaqWUBgb0YAAj1mIMEcoukaxk7sKcV9AFslz/e74w6889mT3pGw1xYHb36pzhh01oxv6J1CT/+MhBAUrm3n7UYlnaa723/Kz7mCfZORNqSdahIhGdWyWqSfYGFAgYgQ==
+  </data>
+ </layer>
+</map>

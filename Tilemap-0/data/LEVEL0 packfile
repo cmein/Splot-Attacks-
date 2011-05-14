@@ -1,0 +1,180 @@
+
+LEVEL01.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+LEVEL0
+  rotate: false
+  xy: 0, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 19
+LEVEL0
+  rotate: false
+  xy: 34, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 18
+LEVEL0
+  rotate: false
+  xy: 68, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 29
+LEVEL0
+  rotate: false
+  xy: 0, 34
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+LEVEL0
+  rotate: false
+  xy: 34, 34
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 48
+LEVEL0
+  rotate: false
+  xy: 68, 34
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 40
+LEVEL0
+  rotate: false
+  xy: 0, 68
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 11
+LEVEL0
+  rotate: false
+  xy: 34, 68
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 10
+LEVEL0
+  rotate: false
+  xy: 68, 68
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 9
+LEVEL0
+  rotate: false
+  xy: 0, 102
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 36
+LEVEL0
+  rotate: false
+  xy: 34, 102
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 37
+LEVEL0
+  rotate: false
+  xy: 68, 102
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 42
+LEVEL0
+  rotate: false
+  xy: 0, 136
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 44
+LEVEL0
+  rotate: false
+  xy: 34, 136
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 45
+LEVEL0
+  rotate: false
+  xy: 68, 136
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 26
+LEVEL0
+  rotate: false
+  xy: 0, 170
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 46
+LEVEL0
+  rotate: false
+  xy: 34, 170
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 47
+LEVEL0
+  rotate: false
+  xy: 68, 170
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 32
+LEVEL0
+  rotate: false
+  xy: 0, 204
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 39
+LEVEL0
+  rotate: false
+  xy: 34, 204
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 38
+LEVEL0
+  rotate: false
+  xy: 68, 204
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 35
+LEVEL0
+  rotate: false
+  xy: 0, 238
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 34
+LEVEL0
+  rotate: false
+  xy: 34, 238
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 33
+LEVEL0
+  rotate: false
+  xy: 68, 238
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 31
+LEVEL0
+  rotate: false
+  xy: 0, 272
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 30

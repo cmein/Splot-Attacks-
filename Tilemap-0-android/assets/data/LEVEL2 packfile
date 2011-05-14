@@ -1,0 +1,96 @@
+
+LEVEL21.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+LEVEL2
+  rotate: false
+  xy: 0, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 40
+LEVEL2
+  rotate: false
+  xy: 0, 34
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 38
+LEVEL2
+  rotate: false
+  xy: 0, 68
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 48
+LEVEL2
+  rotate: false
+  xy: 0, 102
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 31
+LEVEL2
+  rotate: false
+  xy: 0, 136
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 11
+LEVEL2
+  rotate: false
+  xy: 0, 170
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 9
+LEVEL2
+  rotate: false
+  xy: 0, 204
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 46
+LEVEL2
+  rotate: false
+  xy: 0, 238
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 30
+LEVEL2
+  rotate: false
+  xy: 0, 272
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 32
+LEVEL2
+  rotate: false
+  xy: 0, 306
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 20
+LEVEL2
+  rotate: false
+  xy: 0, 340
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 21
+LEVEL2
+  rotate: false
+  xy: 0, 374
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 18
+LEVEL2
+  rotate: false
+  xy: 0, 408
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
