@@ -3,12 +3,20 @@ package com.cmein.tilemap.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.cmein.tilemap.Art;
 import com.cmein.tilemap.Input;
+import com.cmein.tilemap.bullet.Bullet;
+import com.cmein.tilemap.enemy.Enemy;
 import com.cmein.tilemap.tower.ThoriumTower;
-import com.cmein.tilemap.tower.Tower;
 
 public class TileScreen extends Screen{
+	public static int[][] propertyMap = Art.propertyMap1;
+	public static int selectedTileX;
+	public static int selectedTileY;
+	public ThoriumTower tower1;
 	private boolean touched = false;
 	private boolean selected = false;
 	private boolean operateCursor = false;
@@ -23,6 +31,8 @@ public class TileScreen extends Screen{
 	public int tileMapX;
 	public int tileMapY;
 	private float buffer = 0;
+	private TextureRegion aBullet;
+	private TextureRegion enemy;
 	private float enemyCount;
 	private float flyCount;
 	public static int playerHealth=1000;
@@ -35,7 +45,7 @@ public class TileScreen extends Screen{
 	}
 	
 	private void selectTile () {
-		if (TowerScreen.propertyMap[tileMapY][tileMapX] >= 0) {
+		if (propertyMap[tileMapY][tileMapX] >= 0) {
 			selectedX = tileMapX;
 			selectedY = tileMapY;
 			selected = true;
@@ -124,8 +134,8 @@ public class TileScreen extends Screen{
 	
 	private void buildMenu () {
 		if (pixelX <= 76) {
-			if (TowerScreen.placable(selectedX, selectedY)) {
-				TowerScreen.placeTower(1, selectedX, selectedY);
+			if (placable(selectedX, selectedY)) {
+				placeTower(1, selectedX, selectedY);
 				System.out.println(selectedX + ", " + selectedY);
 				playerMoney -= ThoriumTower.cost;
 			}
@@ -156,6 +166,135 @@ public class TileScreen extends Screen{
 		operateBuildMenu = false;
 		touched = true;
 		operateCursor = true;
+	}
+	
+	public void drawTiled (TiledMapRenderer renderer, int x, int y) {
+		Matrix4 projection = new Matrix4();
+		projection.setToOrtho(0, 480, 0, 320, -1, 1);
+		renderer.getProjectionMatrix().set(projection);
+		
+        renderer.render(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	}
+	
+	public void drawEnemies (float count){
+		if(!Art.walkingQueue.isEmpty()){
+			for (int i=0; i<Art.walkingQueue.size(); i++){
+				Enemy newenemy = Art.walkingQueue.get(i);
+				count += .15;
+				if((int) (count*2) % 3 == 0){
+					enemy = Art.firstEnemyAnimationTop.getKeyFrame(newenemy.getStateTime(), true);
+				}else{
+					enemy = Art.firstEnemyAnimationBot.getKeyFrame(newenemy.getStateTime(), true);
+				}
+				newenemy.update(Gdx.graphics.getDeltaTime());
+
+				if(newenemy.isDead()){
+					Art.walkingQueue.remove(i);
+					TileScreen.playerMoney += newenemy.getPay();
+				}else{
+					if(newenemy.getX()<480){
+						draw(enemy, (int) newenemy.getX(), (int) newenemy.getY());
+					}else{
+						Art.walkingQueue.remove(i);
+						TileScreen.playerHealth -= newenemy.getDamage();
+					}
+				}
+				//Art.walkingQueue.get(i).update(Gdx.graphics.getDeltaTime());
+			}
+		}else{
+			System.out.println("HERE");
+			resetGameState();
+		}
+	}
+	
+	public void resetGameState() {
+		setScreen(new LevelSelectScreen());
+		TileScreen.playerHealth = 1000;
+		TileScreen.playerMoney = 100;
+	}
+	
+	private double getAngle(float x, float y, float xa, float ya){
+		double dy = y-ya;
+		double dx = xa-x;
+		double ab = dx*dx + dy*dy;
+		double hyp = Math.sqrt(ab);
+		return Math.asin(dy/hyp);
+	}
+	
+	private boolean isOnLeft(float x, float xa){
+		return xa - x < 0;
+	}
+	
+	public void drawBullets () {
+		if(!Art.currentBullets.isEmpty()){
+			for(int i=0; i<Art.currentBullets.size(); i++){
+				Bullet bullet = Art.currentBullets.get(i);
+				double angleFromTower = Math.toDegrees(getAngle(bullet.startX(), bullet.startY(), bullet.startTargetX(), bullet.startTargetY()));
+				if(angleFromTower >= 22.5 && angleFromTower <= 67.5){
+					if(isOnLeft(bullet.startX(), bullet.startTargetX())){
+						aBullet = Art.diagBullet2;
+					}else{
+						aBullet = Art.diagBullet1;
+					}
+				}else if (angleFromTower > 67.5) {
+					aBullet = Art.verticalBullet;
+				}else if (Math.abs(angleFromTower) < 22.5){
+					if(isOnLeft(bullet.startX(), bullet.startTargetX())){
+						aBullet = Art.horizontalBullet;
+					}else{
+						aBullet = Art.horizontalBullet;
+					}
+				}else if (angleFromTower <= -22.5 && angleFromTower >= -67.5){
+					if(isOnLeft (bullet.startX(), bullet.startTargetX())){
+						aBullet = Art.diagBullet1;
+					}else{
+						aBullet = Art.diagBullet2;
+					}
+				}else{
+					aBullet = Art.verticalBullet;
+				}
+				
+				/*if((bullet.getTargetX() - bullet.getX())*(bullet.getTargetX() - bullet.getX()) > (bullet.getTargetY() - bullet.getY())*(bullet.getTargetY() - bullet.getY())){
+					aBullet = Art.horizontalBullet;
+				}else{
+					aBullet = Art.bulletV;
+				}*/
+				Art.currentBullets.get(i).update(Gdx.graphics.getDeltaTime());
+				if(Art.currentBullets.get(i).hitTarget()){
+					if(Art.currentBullets.get(i).getTower().hasTarget()){
+						Art.currentBullets.get(i).getTower().currentTarget().doDamage(5);
+					}	
+					Art.currentBullets.remove(i);
+				}else{
+					draw(aBullet, (int) bullet.getX(), (int) bullet.getY());
+				}
+			}
+		}
+	}	
+	
+	public static boolean placable (int x, int y) {
+		if (propertyMap[y][x] == 0) {
+			System.out.println(propertyMap[y][x]);
+			selectedTileX = x;
+			selectedTileY = y;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public static boolean placeTower (int tower, int x, int y) {
+		if (selectedTileX == x && selectedTileY == y) {
+			propertyMap[y][x] = tower;
+			ThoriumTower tower1 = new ThoriumTower(x,y);
+			Art.currentTowers.add(tower1);
+			System.out.println("Tower placed");
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	@Override

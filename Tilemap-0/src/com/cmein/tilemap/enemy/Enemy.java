@@ -11,7 +11,6 @@ public abstract class Enemy {
 	public float stateTime;
 	private DIR currentDir;
 	private Path path;
-	private float velocity;
 	private int currentPointIndex;
 	public static final int MAP_HEIGHT = 320;
 	public static final int MAP_WIDTH = 480;
